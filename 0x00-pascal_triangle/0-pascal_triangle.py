@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ The script contains a function to create a Pascal Triangle"""
 
+
 def pascal_triangle(n):
     """The Pascal triangle returns a list of pascal triangle"""
 
