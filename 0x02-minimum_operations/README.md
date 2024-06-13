@@ -1,4 +1,3 @@
-```markdown
 # Minimum Operations Project
 
 ## Description
@@ -43,7 +42,7 @@ To solve this problem, the following concepts are crucial:
 1. Ensure you have Python 3 installed.
 2. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/alx-interview.git
+    git clone https://github.com/johnamet/alx-interview.git
     ```
 3. Navigate to the project directory:
     ```bash
@@ -59,75 +58,5 @@ $ ./0-main.py
 Min # of operations to reach 4 char: 4
 Min # of operations to reach 12 char: 7
 Min # of operations to reach 24 char: 9
-```
-
-### Example
-
-In `0-main.py`, you can find the main file for testing:
-
-```python
-#!/usr/bin/python3
-"""
-Main file for testing
-"""
-
-minOperations = __import__('0-minoperations').minOperations
-
-test_cases = [4, 12, 24]
-for n in test_cases:
-    print(f"Min # of operations to reach {n} char: {minOperations(n)}")
-```
-
-### Code Explanation
-
-The `minOperations` function calculates the minimum number of operations required to achieve `n` characters by summing up the prime factors of `n`.
-
-```python
-#!/usr/bin/env python3
-
-def prime_factors(n):
-    factors = []
-    if n < 2:
-        return factors
-
-    while n % 2 == 0:
-        factors.append(2)
-        n = n // 2
-
-    for i in range(3, int(n ** 0.5) + 1, 2):
-        while n % i == 0:
-            factors.append(i)
-            n = n // i
-
-    if n > 2:
-        factors.append(n)
-
-    return factors
-
-def minOperations(n):
-    if n <= 1:
-        return 0
-
-    operations = 0
-    factors = prime_factors(n)
-
-    for factor in factors:
-        operations += factor
-
-    return operations
-```
-
-### Explanation of Functions
-
-1. **prime_factors(n)**:
-    - This function returns all prime factors of `n`.
-
-2. **minOperations(n)**:
-    - This function calculates the minimum number of operations by summing up the prime factors of `n`.
-
-## License
-
-This project is licensed under the MIT License.
-```
-
-`https://github.com/johnamet/alx-interview.git`  This `README.md` file provides a comprehensive guide to understand, install, and use the project.
+Min # of operations to reach 1 char: 0
+Min # of operations to reach 13 char: 13
