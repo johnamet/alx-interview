@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """The minimum_operations module."""
 from typing import List
 
