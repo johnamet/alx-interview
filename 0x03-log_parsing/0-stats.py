@@ -6,7 +6,8 @@ import signal
 
 # Define the regex pattern for log entries
 line_pattern = re.compile(
-    r'(?P<ip>\d{1,3}(?:\.\d{1,3}){3}) - \[(?P<date>.*?)] "GET /projects/260 HTTP/1\.1" (?P<status>\d{3}) (?P<size>\d+)')
+    r'(?P<ip>\d{1,3}(?:\.\d{1,3}){3}) - \[(?P<date>.*?)] '
+    r'"GET /projects/260 HTTP/1\.1" (?P<status>\d{3}) (?P<size>\d+)')
 
 
 count = 0
