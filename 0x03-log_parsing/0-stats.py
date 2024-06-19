@@ -55,5 +55,3 @@ for line in sys.stdin:
     if count == 10:
         print_metrics()
         count = 0
-
-print_metrics()
