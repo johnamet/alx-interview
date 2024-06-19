@@ -1,13 +1,15 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+"""Reads stdin line by line and prints statistics about each line"""
 import sys
 import re
 import signal
 
+# Define the regex pattern for log entries
 line_pattern = re.compile(
     r'(?P<ip>\d{1,3}(?:\.\d{1,3}){3}) - \[(?P<date>.*?)] "GET /projects/260 HTTP/1\.1" (?P<status>\d{3}) (?P<size>\d+)')
 
-count = 0
 
+count = 0
 file_size = 0
 metric_dict = {}
 
@@ -25,7 +27,6 @@ def print_metrics():
 def signal_handler(signal, frame):
     """Handler for Ctrl+C"""
     print_metrics()
-
     sys.exit(0)
 
 
@@ -54,6 +55,5 @@ for line in sys.stdin:
 
     if count == 10:
         count = 0
-        metric_dict = {}
 
     count += 1
