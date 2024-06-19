@@ -54,6 +54,7 @@ for line in sys.stdin:
     count += 1
     if count == 10:
         print_metrics()
+        metric_dict = {}
         count = 0
 
 print_metrics()
