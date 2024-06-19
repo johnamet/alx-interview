@@ -3,6 +3,7 @@
 import re
 import signal
 import sys
+from types import FrameType
 
 # Define the regex pattern for log entries
 line_pattern = re.compile(
@@ -16,7 +17,7 @@ metric_dict = {}
 valid_codes = [200, 301, 400, 401, 403, 404, 405, 500]
 
 
-def print_metrics():
+def print_metrics() -> None:
     """Print out the metrics to the standard output."""
     sys.stdout.write(f'File size: {file_size}\n')
 
@@ -25,7 +26,7 @@ def print_metrics():
     sys.stdout.flush()
 
 
-def signal_handler(signal, frame):
+def signal_handler(signal: signal.Signals, frame:FrameType) -> None:
     """Handler for Ctrl+C"""
     print_metrics()
     sys.exit(0)
