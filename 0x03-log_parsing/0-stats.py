@@ -11,7 +11,7 @@ line_pattern = re.compile(
 
 count = 0
 file_size = 0
-metric_dict:dict[int, int] = {}
+metric_dict = {}
 
 valid_codes = [200, 301, 400, 401, 403, 404, 405, 500]
 
