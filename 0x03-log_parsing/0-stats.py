@@ -6,8 +6,10 @@ import sys
 
 # Define the regex pattern for log entries
 line_pattern = re.compile(
-    r'(?P<ip>\d{1,3}(?:\.\d{1,3}){3}) - \[(?P<date>.*?)] '
-    r'"GET /projects/260 HTTP/1\.1" (?P<status>\d{3}) (?P<size>\d+)')
+    r'(?P<ip>\S+?)\s*-\s*\[(?P<date>.*?)\] '
+    r'".*?" (?P<status>\d{3}) (?P<size>\d+)')
+
+
 
 count = 0
 file_size = 0
@@ -37,20 +39,19 @@ for line in sys.stdin:
     match = line_pattern.match(line.strip())
     if match:
         extracts = match.groupdict()
-        ip_address = extracts['ip']
-        date = extracts['date']
         status_code = extracts['status']
         size = extracts['size']
 
         file_size += int(size)
 
-        if status_code.isnumeric():
+        if status_code.isdigit():  # Check if status_code is numeric
             status_code = int(status_code)
             if status_code in valid_codes:
                 if status_code in metric_dict:
                     metric_dict[status_code] += 1
                 else:
                     metric_dict[status_code] = 1
+
     count += 1
     if count == 10:
         print_metrics()
