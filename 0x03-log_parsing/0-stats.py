@@ -7,9 +7,7 @@ import sys
 # Define the regex pattern for log entries
 line_pattern = re.compile(
     r'(?P<ip>\S+?)\s*-\s*\[(?P<date>.*?)\] '
-    r'".*?" (?P<status>\d{3}) (?P<size>\d+)')
-
-
+    r'".*?" (?P<status>\S+?) (?P<size>\d+)')
 
 count = 0
 file_size = 0
@@ -42,8 +40,9 @@ for line in sys.stdin:
         status_code = extracts['status']
         size = extracts['size']
 
-        file_size += int(size)
+        print(size)
 
+        file_size += int(size)
         if status_code.isdigit():  # Check if status_code is numeric
             status_code = int(status_code)
             if status_code in valid_codes:
