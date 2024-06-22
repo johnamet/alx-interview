@@ -7,7 +7,7 @@ import sys
 # Define the regex pattern for log entries
 line_pattern = re.compile(
     r'(?P<ip>\S+?)\s*-\s*\[(?P<date>.*?)\] '
-    r'".*?" (?P<status>\S+?) (?P<size>\d+)')
+    r'".*?" (?P<status>\d{3}) (?P<size>\d+)')
 
 count = 0
 file_size = 0
@@ -34,15 +34,15 @@ def signal_handler(signal, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 for line in sys.stdin:
+    size = line.strip().split()[-1]
+    file_size += int(size)
+
     match = line_pattern.match(line.strip())
+
     if match:
         extracts = match.groupdict()
         status_code = extracts['status']
-        size = extracts['size']
 
-        print(size)
-
-        file_size += int(size)
         if status_code.isdigit():  # Check if status_code is numeric
             status_code = int(status_code)
             if status_code in valid_codes:
