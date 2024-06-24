@@ -11,9 +11,24 @@ def validUTF8(data: List[int]) -> bool:
     :return: bool if the data is a valid utf8 encoding
     """
 
-    for i in data:
-        if i > 0 and i < 127:
-            continue
+    num_byte = 0
+
+    for byte in data:
+        if num_byte == 0:
+            if (byte >> 7) == 0:
+                continue
+            if (byte >> 5) == 0b110:
+                num_byte = 1
+            if (byte >> 4) == 0b1110:
+                num_byte = 2
+            if (byte >> 2) == 0b11110:
+                num_byte = 3
+
         else:
-            return False
-    return True
+            if (byte >> 6) != 0b10:
+                return False
+
+            num_byte -= 1
+
+
+    return num_byte == 0
