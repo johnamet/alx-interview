@@ -23,6 +23,8 @@ def validUTF8(data: List[int]) -> bool:
                 num_byte = 2
             if (byte >> 3) == 0b11110:
                 num_byte = 3
+            else:
+                return False
 
         else:
             if (byte >> 6) != 0b10:
