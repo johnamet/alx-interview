@@ -14,8 +14,6 @@ def validUTF8(data: List[int]) -> bool:
     num_byte = 0
 
     for byte in data:
-        if byte > 255:
-            return False
         if num_byte == 0:
             if (byte >> 7) == 0:
                 continue
@@ -25,6 +23,8 @@ def validUTF8(data: List[int]) -> bool:
                 num_byte = 2
             if (byte >> 3) == 0b11110:
                 num_byte = 3
+            if byte > 255:
+                return False
             else:
                 return False
 
