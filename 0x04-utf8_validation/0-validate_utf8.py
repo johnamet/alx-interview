@@ -21,7 +21,7 @@ def validUTF8(data: List[int]) -> bool:
                 num_byte = 1
             if (byte >> 4) == 0b1110:
                 num_byte = 2
-            if (byte >> 2) == 0b11110:
+            if (byte >> 3) == 0b11110:
                 num_byte = 3
 
         else:
@@ -29,6 +29,5 @@ def validUTF8(data: List[int]) -> bool:
                 return False
 
             num_byte -= 1
-
 
     return num_byte == 0
