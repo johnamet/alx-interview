@@ -45,8 +45,12 @@ def solve_nqueens(board: list[int],
 
 
 def main():
+    """
+    Main function
+    :return:
+    """
     if len(sys.argv) != 2:
-        print('Usage: nqueens N')
+        print("Usage: nqueens N")
         sys.exit(1)
 
     try:
@@ -55,17 +59,12 @@ def main():
         print("N must be a number")
         sys.exit(1)
 
-    if not isinstance(n, int):
-        print("N must be a number")
-        sys.exit(1)
-
     if n < 4:
         print("N must be at least 4")
-        exit(1)
+        sys.exit(1)
 
-    board: list[int] = [-1] * n
-
-    print(solve_nqueens(board, 0, n))
+    board = [-1] * n
+    solve_nqueens(board, 0, n)
 
 
 if __name__ == '__main__':
