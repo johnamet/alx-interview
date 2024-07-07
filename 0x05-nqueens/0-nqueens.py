@@ -32,6 +32,13 @@ def is_safe(board: list[int], row: int, col: int, n: int) -> bool:
 
 def solve_nqueens(board: list[int],
                   row: int, n: int) -> list[list[int]] | None:
+    """
+    Solves the nQueens problem
+    :param board: the board to solve
+    :param row: row of the board
+    :param n:  size of the board
+    :return:
+    """
     if row == n:
         solution = [[i, board[i]] for i in range(n)]
         print(solution)
