@@ -22,7 +22,7 @@ class NQueen:
             # There is already a queen in column
             # or a queen in same diagonal
             if self.x[j] == i or \
-               abs(self.x[j] - i) == abs(j - k):
+                    abs(self.x[j] - i) == abs(j - k):
                 return 0
         return 1
 
