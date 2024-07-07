@@ -56,22 +56,26 @@ def main():
     Main function
     :return:
     """
+    # Main
+
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
 
+    N = sys.argv[1]
+
     try:
-        n = int(sys.argv[1])
+        N = int(N)
     except ValueError:
         print("N must be a number")
         sys.exit(1)
 
-    if n < 4:
+    if N < 4:
         print("N must be at least 4")
         sys.exit(1)
 
-    board = [-1] * n
-    solve_nqueens(board, 0, n)
+    board = [-1] * N
+    solve_nqueens(board, 0, N)
 
 
 if __name__ == '__main__':
