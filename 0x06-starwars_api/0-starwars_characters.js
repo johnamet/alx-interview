@@ -25,15 +25,22 @@ function makeGetRequest (url) {
 async function fecthNameofCharacter (character) {
   try {
     const data = await makeGetRequest(character);
-    console.log(data.name);
+    return data.name;
   } catch (error) {
     console.error('Error fetching name');
   }
 }
 
 async function fetchCharacters (characters) {
-  characters.forEach((character) => {
-    fecthNameofCharacter(character);
+  const chrs = [];
+
+  for (const character of characters) {
+    const name = await fecthNameofCharacter(character);
+    chrs.push(name);
+  }
+
+  chrs.forEach((chr) => {
+    console.log(chr);
   });
 }
 
