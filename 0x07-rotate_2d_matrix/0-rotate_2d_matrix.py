@@ -2,10 +2,9 @@
 """
 The module contain the functions for rotating the 2D matrix
 """
-from typing import List
 
 
-def rotate_2d_matrix(matrix: List[List[int]]):
+def rotate_2d_matrix(matrix):
     """
     Rotate the 2D matrix by 90 degrees.
     :param matrix:
