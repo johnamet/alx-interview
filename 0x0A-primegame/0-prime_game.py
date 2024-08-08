@@ -4,9 +4,11 @@ THe Prime game module
 """
 from typing import List, Optional, Tuple
 
+
 def sieve_of_eratosthenes(max_num: int) -> Tuple[List[int], List[bool]]:
     """
-    Generates all prime numbers up to a given maximum number using the Sieve of Eratosthenes algorithm.
+    Generates all prime numbers up to a given maximum number
+     using the Sieve of Eratosthenes algorithm.
 
     Args:
         max_num (int): The maximum number up to which primes are generated.
@@ -14,14 +16,15 @@ def sieve_of_eratosthenes(max_num: int) -> Tuple[List[int], List[bool]]:
     Returns:
         Tuple[List[int], List[bool]]: A tuple containing:
             - A list of prime numbers up to max_num.
-            - A boolean list where the index represents whether that number is prime.
+            - A boolean list where the index represents
+                whether that number is prime.
     """
     # Initialize a list to mark prime numbers
     is_prime = [True] * (max_num + 1)
     is_prime[0] = is_prime[1] = False  # 0 and 1 are not primes
 
     # Implementing the Sieve of Eratosthenes algorithm
-    for start in range(2, int(max_num**0.5) + 1):
+    for start in range(2, int(max_num ** 0.5) + 1):
         if is_prime[start]:
             for multiple in range(start * start, max_num + 1, start):
                 is_prime[multiple] = False
@@ -31,26 +34,32 @@ def sieve_of_eratosthenes(max_num: int) -> Tuple[List[int], List[bool]]:
 
     return primes, is_prime
 
+
 def isWinner(x: int, nums: List[int]) -> Optional[str]:
     """
     Determines the winner of the game played between Maria and Ben.
 
-    Maria and Ben take turns picking a prime number from a set of consecutive integers.
-    The player who cannot make a move loses. This function simulates x rounds of the game
+    Maria and Ben take turns picking a prime number from
+    a set of consecutive integers.
+    The player who cannot make a move loses.
+    This function simulates x rounds of the game
     and determines which player wins the most rounds.
 
     Args:
         x (int): The number of rounds played.
-        nums (List[int]): A list containing the maximum integer n for each round.
+        nums (List[int]): A list containing
+        the maximum integer n for each round.
 
     Returns:
-        Optional[str]: The name of the player who wins the most rounds ("Maria" or "Ben").
+        Optional[str]: The name of the player who
+                       wins the most rounds ("Maria" or "Ben").
                        Returns None if the result is a tie.
     """
     if not nums or x < 1:
         return None
 
-    # Determine the maximum number in nums to know the limit for primes calculation
+    # Determine the maximum number in nums to
+    # know the limit for primes calculation
     max_num = max(nums)
 
     # Generate primes up to the maximum number using Sieve of Eratosthenes
