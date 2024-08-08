@@ -2,10 +2,9 @@
 """
 THe Prime game module
 """
-from typing import List, Optional, Tuple
 
 
-def sieve_of_eratosthenes(max_num: int) -> Tuple[List[int], List[bool]]:
+def sieve_of_eratosthenes(max_num: int):
     """
     Generates all prime numbers up to a given maximum number
      using the Sieve of Eratosthenes algorithm.
@@ -35,7 +34,7 @@ def sieve_of_eratosthenes(max_num: int) -> Tuple[List[int], List[bool]]:
     return primes, is_prime
 
 
-def isWinner(x: int, nums: List[int]) -> Optional[str]:
+def isWinner(x, nums):
     """
     Determines the winner of the game played between Maria and Ben.
 
